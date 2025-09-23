@@ -1,0 +1,26 @@
+{
+  "name": "stackoverflow-mcp-server",
+  "version": "1.0.0",
+  "description": "An MCP server for searching Stack Overflow questions, answers, and comments.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node stackOverflow.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "mcp",
+    "stackoverflow",
+    "agentic-ai",
+    "server"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
