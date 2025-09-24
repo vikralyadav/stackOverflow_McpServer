@@ -20,8 +20,15 @@ const RETRY_AFTER_MS = 2000;
 class StackOverflowServer {
   constructor() {
     this.server = new Server(
-      { name: "stackoverflow-mcp", version: "0.1.0" },
-      { capabilities: { tools: {} } }
+      { 
+        name: "stackoverflow-mcp", 
+        version: "0.1.0"
+       },
+      { 
+        capabilities: { 
+          tools: {} 
+        }
+       }
     );
 
     this.apiKey = undefined;
@@ -390,7 +397,10 @@ class StackOverflowServer {
     }
 
     return {
-      content: [{ type: "text", text: this.formatResponse(results, args.responseFormat) }],
+      content: [{ 
+        type: "text", 
+        text: this.formatResponse(results, args.responseFormat) 
+      }],
     };
   }
 
@@ -405,7 +415,9 @@ class StackOverflowServer {
     });
 
     return {
-      content: [{ type: "text", text: this.formatResponse(results, args.responseFormat) }],
+      content: [{
+         type: "text", 
+         text: this.formatResponse(results, args.responseFormat) }],
     };
   }
 
