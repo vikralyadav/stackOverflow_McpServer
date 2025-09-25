@@ -1,21 +1,23 @@
-import {config} from "dotenv";
+import { config } from "dotenv";
 config();
 
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { AgentExecutor, createToolCallingAgent } from "langchain/agents";
+import { DynamicStructuredTool } from "langchain/tools";
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { z } from "zod";
+import axios from "axios";
 
-const { ChatGoogleGenerativeAI } = require("@langchain/google-genai");
-const { AgentExecutor, createToolCallingAgent } = require("langchain/agents");
-const { DynamicStructuredTool } = require("langchain/tools");
-const { ChatPromptTemplate } = require("@langchain/core/prompts");
 
 
-
-const { z } = require("zod");
 
 const model = new ChatGoogleGenerativeAI({
-  model: "gemini-1.5-flash", 
+  model: "gemini-2.5-flash",           
+  apiVersion: "v1beta",                 
   temperature: 0,
   apiKey: process.env.GOOGLE_API_KEY,
 });
+
 
 const searchTool = new DynamicStructuredTool({
   name: "search_by_keyword",
@@ -27,23 +29,36 @@ const searchTool = new DynamicStructuredTool({
   }),
   func: async ({ keywords, limit = 10, responseFormat = "json" }) => {
     try {
-      const mockResults = [
-        { title: "LinkedIn Growth Strategy", author: "John Doe" },
-        { title: "Future of AI on LinkedIn", author: "Jane Smith" },
-      ].slice(0, limit);
+
+      const response = await axios.get(
+        `https://nubela.co/proxycurl/api/search/person/?keywords=${encodeURIComponent(
+          keywords
+        )}&limit=${limit}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.PROXYCURL_API_KEY}`, 
+          },
+        }
+      );
+
+      const results = response.data;
 
       if (responseFormat === "markdown") {
-        return mockResults
-          .map((r, i) => `${i + 1}. **${r.title}** — ${r.author}`)
+        return results
+          .map(
+            (r, i) =>
+              `${i + 1}. **${r.full_name}** — ${r.occupation || "N/A"}`
+          )
           .join("\n");
       }
 
-      return JSON.stringify(mockResults, null, 2);
+      return JSON.stringify(results, null, 2);
     } catch (err) {
-      return `Error: ${err.message}`;
+      return `Error fetching LinkedIn data: ${err.message}`;
     }
   },
 });
+
 
 
 const prompt = ChatPromptTemplate.fromMessages([
@@ -61,9 +76,11 @@ const agent = createToolCallingAgent({
 
 const executor = new AgentExecutor({
   agent,
+   tools: [searchTool], 
 });     
 
 const result = await executor.invoke({
-  input: "Find recent articles on LinkedIn about AI advancements",
+  input: "Find LinkedIn profiles of AI researchers",
 });
+
 console.log("🤖 Agent response:", result.output);
