@@ -192,9 +192,106 @@ checkRateLimit() {
     "responseFormat": "markdown"
   }
 }
+
+
+
+
+
 ```
 
 ---
+
+
+
+
+
+
+# StackOverflow MCP Agent
+
+This project is an AI-powered agent that leverages Google Gemini (via LangChain) and your Stack Overflow MCP Server to automatically search for solutions to programming errors. The agent can interpret natural language queries, call the Stack Overflow search tool, and return relevant answers—all in one seamless workflow.
+
+---
+
+## How It Works
+
+- Uses [LangChain](https://js.langchain.com/) to orchestrate tool calls and prompt handling.
+- Integrates with Google Gemini (`gemini-1.5-flash`) for advanced language understanding.
+- Calls your local Stack Overflow MCP Server’s `search_by_error` tool to fetch relevant Stack Overflow results.
+
+---
+
+## Setup
+
+### 1. Prerequisites
+
+- Node.js installed
+- Your Stack Overflow MCP Server running (see previous README)
+- A [Google Generative AI API key](https://ai.google.dev/)
+
+---
+
+### 2. Install Dependencies
+
+```sh
+npm install
+```
+
+---
+
+### 3. Configure Environment
+
+Create a `.env` file in your project root:
+
+```
+GOOGLE_API_KEY=your_google_api_key_here
+```
+
+---
+
+### 4. Run the Agent
+
+```sh
+node agent_stackoverflow.js
+```
+
+---
+
+## Example
+
+When you run the agent, it will send a query like:
+
+```
+I am getting 'TypeError: cannot read property of undefined' in JavaScript
+```
+
+The agent will:
+1. Use Gemini to understand the query.
+2. Call the `search_by_error` tool on your MCP server.
+3. Print the best Stack Overflow answers to your terminal.
+
+---
+
+## Code Highlights
+
+**Tool Definition:**
+````js
+const searchByErrorTool = new DynamicStructuredTool({
+  name: "search_by_error",
+  description: "Search Stack Overflow for error-related questions",
+  schema: z.object({
+    errorMessage: z.string(),
+    language: z.string().optional(),
+    // ...
+  }),
+  func: async (input) => {
+    const res = await fetch("http://localhost:3000/mcp/search_by_error", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    return await res.text();
+  },
+});
 
 ## License
 
