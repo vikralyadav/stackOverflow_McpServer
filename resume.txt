@@ -1,0 +1,243 @@
+%-------------------------
+% Resume in Latex
+% Author : Vikral Yadav
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,11pt]{article}
+\usepackage{graphicx} % Required for including images
+\usepackage{fontawesome}
+
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \textbf{\scshape Vikral Yadav}} \\
+    Ghaziabad, Uttar Pradesh $|$ +91 6388302211 $|$ 
+    \href{mailto:yadavvikral2003@gmail.com}{\faEnvelope} 
+    \href{https://www.linkedin.com/in/vikral-yadav-37b404214/}{\faLinkedin} 
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Career Objective}
+\resumeItem{To build scalable applications and grow as a full-stack developer while contributing to organizational success.}
+
+
+
+
+
+  %-----------EXPERIENCE-----------
+\section{Experience}
+
+
+
+\resumeSubheading
+ {Flutter Developer Intern}{Apr. 2025 -- Present}
+{iSource Technology}{Delhi}
+\resumeItemListStart
+    \resumeItem{Built and maintained 3 production apps: \textbf{HRMS}, \textbf{Partner Onboarding}, and \textbf{Transport Management}, serving 5000+ users.}  
+    \resumeItem{Optimized \textbf{self-onboarding} with stepper-based API workflow, reducing process time by \textbf{40\%}.}  
+    \resumeItem{Collaborated with backend teams to design and integrate scalable APIs, improving response efficiency by \textbf{30\%}.}  
+    \resumeItem{Developed 50+ reusable Flutter widgets, boosting development speed and maintainability by \textbf{65\%}.}  
+\resumeItemListEnd
+
+
+  \resumeSubHeadingListEnd
+  
+
+    % \resumeSubheading
+    % {Full Stack Developer Intern}{Jan. 2024 -- May 2024}
+    % {Webknot Technologies}{Ghaziabad, Uttar Pradesh}
+    % \resumeItemListStart
+    %     \resumeItem{Integrated RESTful APIs, improving response time by 25\% and enhancing system performance.}
+    %     \resumeItem{Collaborated with a cross-functional team of 5 developers to deliver the project.}
+    %     \resumeItem{Created API documentation, reducing developer onboarding time by 50\%.}
+    % \resumeItemListEnd
+
+
+    \resumeSubheading
+{Flutter Developer Intern}{July 2024 -- Aug. 2024}
+{IBM SkillBuild}{India}
+\resumeItemListStart
+    \resumeItem{Developed a responsive and interactive mobile application using \textbf{Flutter}, improving overall user experience.}  
+    \resumeItem{Integrated external \textbf{News APIs} to deliver real-time and continuously updated news content.}  
+    \resumeItem{Implemented \textbf{web scraping techniques} to enhance coverage and provide diverse news sources.}  
+\resumeItemListEnd
+
+
+
+  \resumeSubHeadingListEnd
+
+
+  %-----------PROJECTS-----------
+\section{Personal Projects}
+\resumeItem{\textbf{KwikkWash - Car Wash Booking App} (\textit{Flutter}, \textit{Node.js}, \textit{Razorpay}) \href{https://apps.apple.com/in/app/kwikkwash/id6746857146 }{\textcolor{blue}{[App]}}}
+
+\resumeItemListStart
+    \resumeItem{Built a cross-platform car wash booking app with Razorpay and scalable Node.js backend, serving 10K+ users.} 
+    \resumeItem{Released 10+ production updates on Play Store and App Store with responsive Flutter UI and state management.}  
+    \resumeItem{Implemented slot availability and booking workflows, achieving 95\%+ booking success rate under high traffic.}  
+\resumeItemListEnd
+
+
+
+
+\resumeItem{\textbf{News App} (\textit{Flutter}, \textit{RESTful API}) \href{https://drive.google.com/file/d/1KXTxaIskZC42OT8yxigs5AVwjPiAbc_a/view?pli=1}{\textcolor{blue}{[APK Link]}}}
+  \resumeItemListStart
+    \resumeItem{Built a real-time news app with API integration, pagination, and caching for smooth performance.}  
+    \resumeItem{Designed a responsive Flutter UI with category and channel-based personalization.}  
+    \resumeItem{Used BLoC/Provider for efficient state management and seamless user experience.}  
+  \resumeItemListEnd
+
+
+
+
+  \resumeItemListEnd
+
+
+
+  
+
+%-----------TECHNICAL SKILLS-----------
+
+
+
+
+
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+        \item{\textbf{Languages}: Dart, C++, HTML/CSS, JavaScript, SQL, Solidity.} \\
+        \textbf{Core Subjects}: Data Structures and Algorithms, OOPs, Database Management System. \\
+        \textbf{Frameworks and Databases}: Flutter, Firebase, Node.js, Express, MongoDB, MySQL. \\
+        \textbf{Developer Tools}: Git, GitHub, Sublime Text, VS Code, Android Studio, Android Emulator, Meta Mask Wallet, Remix Etherium IDE.
+    }
+\end{itemize}
+
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Dr. A.P.J. Abdul Kalam Technical University}{Ghaziabad, Uttar Pradesh}
+      {Bachelor of Technology in Computer Science and Information Technology}{Nov. 2021 -- June 2025}
+  \resumeSubHeadingListEnd
+
+
+
+
+
+
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+\begin{itemize}
+    \item Finalist in an internal hackathon with over 250 registrations.
+    \item Solved 300+ DSA problems on GeeksforGeeks with a \textbf{210+ day Problem of the Day streak} and ranked \textbf{Top 120 among college peers}, demonstrating consistent problem-solving skills.  
+
+
+\end{itemize}
+
+%-----------PROFILE LINKS-----------
+\section{Profile Links}
+\begin{center}
+    \href{https://github.com/vikralyadav}{\faGithub} \hfill
+    \href{https://www.linkedin.com/in/vikral-yadav-37b404214/}{\faLinkedin} \hfill
+    \href{https://www.geeksforgeeks.org/user/yadavvik6vm5/}{\faCode}
+\end{center}
+
+\end{document}
