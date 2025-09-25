@@ -8,9 +8,7 @@ import { AgentExecutor, createToolCallingAgent } from "langchain/agents";
 import { DynamicStructuredTool } from "langchain/tools";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
-// -------------------------
-// 1. Setup LLM
-// -------------------------
+
 const model = new ChatGoogleGenerativeAI({
   model: "gemini-2.5-flash",
   apiVersion: "v1beta",
@@ -18,17 +16,15 @@ const model = new ChatGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_API_KEY,
 });
 
-// -------------------------
-// 2. Tool to read candidate resume
-// -------------------------
+
 function readOverleafFile(fileName) {
   try {
     const filePath = path.resolve("./", fileName);
     const data = fs.readFileSync(filePath, "utf-8");
-    console.log("✅ Resume file read successfully!");
+    console.log(" Resume file read successfully!");
     return data;
   } catch (error) {
-    console.error("❌ Error reading file:", error);
+    console.error(" Error reading file:", error);
     return null;
   }
 }
@@ -46,9 +42,7 @@ const readResumeTool = new DynamicStructuredTool({
   func: async ({ fileName }) => readOverleafFile(fileName),
 });
 
-// -------------------------
-// 3. Prompt template (for candidate reply)
-// -------------------------
+
 const prompt = ChatPromptTemplate.fromMessages([
   [
     "system",
@@ -59,9 +53,7 @@ Read the candidate's resume and the job description, then create a personalized,
   ["placeholder", "{agent_scratchpad}"], // mandatory
 ]);
 
-// -------------------------
-// 4. Create agent
-// -------------------------
+
 const agent = await createToolCallingAgent({
   llm: model,
   tools: [readResumeTool],
@@ -73,9 +65,7 @@ const executor = new AgentExecutor({
   tools: [readResumeTool],
 });
 
-// -------------------------
-// 5. Candidate reply generator
-// -------------------------
+
 async function generateCandidateReply(jobDescription) {
   const result = await executor.invoke({
     input: `Please read the candidate's resume file "resume.txt" and write a professional, compelling application message for this job posting:\n\n${jobDescription}`,
@@ -85,9 +75,6 @@ async function generateCandidateReply(jobDescription) {
   console.log(result.output);
 }
 
-// -------------------------
-// 6. Example usage
-// -------------------------
 generateCandidateReply(
   "We are hiring a Flutter Developer with Node.js backend experience and familiarity with BLoC or GetX for state management."
 );
