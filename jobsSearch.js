@@ -29,6 +29,8 @@ function readOverleafFile(fileName) {
   }
 }
 
+
+
 const readResumeTool = new DynamicStructuredTool({
   name: "read_resume_file",
   description: "Reads candidate's resume from LaTeX/Overleaf file",
@@ -78,3 +80,4 @@ async function generateCandidateReply(jobDescription) {
 generateCandidateReply(
   "We are hiring a Flutter Developer with Node.js backend experience and familiarity with BLoC or GetX for state management."
 );
+///
